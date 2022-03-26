@@ -47,14 +47,15 @@ export function example() {
   const clock = new THREE.Clock()
 
   function draw() {
-    const time = clock.getElapsedTime()
+    // const time = clock.getElapsedTime()
+    const delta = clock.getDelta()
     
     // 각도는 Radian 을 사용
     // 360도는 2파이
     // mesh.rotation.y += THREE.MathUtils.degToRad(1)
-    mesh.rotation.y = time
+    mesh.rotation.y += delta
     // mesh.rotation.x += THREE.MathUtils.degToRad(2)
-    mesh.position.y = time % 3
+    mesh.position.y += delta
     if (mesh.position.y > 3) {
       mesh.position.y = 0
     }
