@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import Stats from 'stats.js'
+import dat from 'dat.gui'
 
 // ----- 주제: 초당 프레임 수(FPS) 체크하기
 
@@ -45,8 +45,9 @@ export default function example() {
 	mesh.position.x = 2
 	scene.add(mesh);
 	
-	const stats = new Stats()
-	document.body.append(stats.dom)
+	const gui = new dat.GUI()
+	gui.add(mesh.position, 'y', -5, 5, 0.01)
+	gui.add(camera.position, 'x', -10, 10, .01).name('카메라 X')
 
 	// 그리기
 	const clock = new THREE.Clock();
@@ -54,7 +55,8 @@ export default function example() {
 	function draw() {
 		const time = clock.getElapsedTime();
 
-		stats.update()
+		camera.lookAt(mesh.position)
+		
 		mesh.rotation.y = time;
 
 		renderer.render(scene, camera);
