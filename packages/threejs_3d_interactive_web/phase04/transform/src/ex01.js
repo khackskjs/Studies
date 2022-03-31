@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import dat from 'dat.gui';
 
-// ----- 주제: 위치 이동
+// ----- 주제: 크기 조정
 
 export default function example() {
 	// Renderer
@@ -60,11 +60,8 @@ export default function example() {
 	function draw() {
 		const delta = clock.getDelta();
 
-		mesh.position.set(-1, 1, 0)
-		// console.log(mesh.position.length())
-
-		// console.log(mesh.position.distanceTo(new THREE.Vector3(1, 2, 0)))
-		console.log(mesh.position.distanceTo(camera.position))
+		mesh.scale.x = 2
+		mesh.scale.set(2, 0.1, 3)
 
 		renderer.render(scene, camera);
 		renderer.setAnimationLoop(draw);
