@@ -23,7 +23,7 @@ export default function example() {
 		0.1,
 		1000
 	);
-	camera.position.z = 4;
+	camera.position.z = 14;
 	scene.add(camera);
 
 	// Light
@@ -39,14 +39,17 @@ export default function example() {
 	const controls = new OrbitControls(camera, renderer.domElement)
 
 	// Mesh
-	const geometry = new THREE.BoxGeometry(1, 1, 1, 16, 16, 16);
+	const geometry = new THREE.SphereGeometry(5, 64, 64)
 	const material = new THREE.MeshStandardMaterial({
-		color: 'hotpink',
-		// side: THREE.DoubleSide,
-		wireframe: true,
+		color: 'orangered',
+		// wireframe: true,
+		side: THREE.DoubleSide,
+		flatShading: true
 	});
 	const mesh = new THREE.Mesh(geometry, material);
 	scene.add(mesh);
+
+	console.log(geometry.attributes.position.array)
 
 	// 그리기
 	const clock = new THREE.Clock();
@@ -59,7 +62,7 @@ export default function example() {
 	}
 
 	function setSize() {
-		camera.aspect = window.innerWidth / window.innerHeight;
+		cameraaspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.render(scene, camera);
