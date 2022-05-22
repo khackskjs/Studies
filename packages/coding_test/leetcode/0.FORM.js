@@ -31,7 +31,7 @@ function main() {
 
   for (let i = 0 ; i < inputs.length ; i++) {
     const result = solve(inputs[i])
-    console.log(`[${i}] result: + ${isEqual(result, expects[i]) ? successStr : failStr}`)
+    console.log(`[${i}] result: ${isEqual(result, expects[i]) ? successStr : failStr}`)
     console.log(`[${i}] output:`, result, '\n')
   }
 }
