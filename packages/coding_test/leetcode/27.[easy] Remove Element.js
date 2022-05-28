@@ -5,28 +5,21 @@
  * @return {number}
  */
 var removeElement = function(nums, val) {
-  if (nums.length === 0) {
-    return 0
-  }
+  
+  /**
+   * Refactor
+   * K 를 반환한다고 할 때 nums(input array)의 [0, K] 까지만 val 이 포함되지 않는 값이면 된다.
+   * 따라서 for 한바퀴 돌면서 val가 아닌 항목에 대해서 차곡차곡 저장하면 된다.
+   */
 
-  let p = nums.length - 1
-
-  for(let i = 0 ; i < nums.length ; i++) {
-    const num = nums[i]
-    if (num === val) {
-      [nums[i], nums[p]] = [nums[p] , '_']
-      p--
-    }
-    if (nums[i] === val) {
-      i--
-      continue
-    }
-
-    if (p <= i) {
-      break
+  let k = 0
+  for (let i = 0 ; i < nums.length ; i++) {
+    if (nums[i] !== val) {
+      nums[k++] = nums[i]
     }
   }
-  return p + 1
+  
+  return k
 };
 
 function solve(args) {
