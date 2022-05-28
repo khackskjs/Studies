@@ -31,8 +31,12 @@ function main() {
 
   for (let i = 0 ; i < inputs.length ; i++) {
     const result = solve(inputs[i])
-    console.log(`[${i}] result: ${isEqual(result, expects[i]) ? successStr : failStr}`)
-    console.log(`[${i}] output:`, result, '\n')
+    const isSuccess = isEqual(result, expects[i])
+    console.log(`[${i}] result: ${isSuccess ? successStr : failStr}`)
+    console.log(`[${i}] output:`, result)
+    if (!isSuccess) {
+      console.log(`[${i}] expects:`, expects[i], '\n')
+    }
   }
 }
 
